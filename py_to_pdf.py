@@ -42,8 +42,8 @@ def py_to_pdf(input_file, output_file):
     c.save()
 
 # Usage
-input_file = r"C:\Users\kroy2\Documents\python\projects\json_triage\json_triage_to_df_flat.py"
-output_file = r"C:\Users\kroy2\Documents\python\projects\json_triage\json_triage_to_df_flat.pdf"
+input_file = r"C:\Users\kroy2\Documents\python\projects\json_processor\scripts\process_json2.py"
+output_file = r"C:\Users\kroy2\Documents\python\projects\json_processor\scripts\process_json2.pdf"
 py_to_pdf(input_file, output_file)
 
 print(f"PDF created: {output_file}")
