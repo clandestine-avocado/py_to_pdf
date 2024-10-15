@@ -2,6 +2,8 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.utils import simpleSplit
 import os
+import tkinter as tk
+from tkinter import filedialog
 
 def py_to_pdf(input_file, output_file):
     # Create a new PDF with Reportlab
@@ -41,9 +43,24 @@ def py_to_pdf(input_file, output_file):
 
     c.save()
 
-# Usage
-input_file = r"C:\Users\kroy2\Documents\python\projects\csv_tools\csv_fix_quotes.py"
-output_file = r"C:\Users\kroy2\Documents\python\projects\csv_tools\csv_fix_quotes.pdf"
-py_to_pdf(input_file, output_file)
+# Create a root window and hide it
+root = tk.Tk()
+root.withdraw()
 
-print(f"PDF created: {output_file}")
+# Open file dialog to choose input file
+input_file = filedialog.askopenfilename(title="Select Python file", filetypes=[("Python files", "*.py")])
+
+if input_file:
+    # Get the directory and filename without extension
+    dir_name = os.path.dirname(input_file)
+    file_name = os.path.splitext(os.path.basename(input_file))[0]
+
+    # Create output filename
+    output_file = os.path.join(dir_name, f"{file_name}.pdf")
+
+    # Convert Python file to PDF
+    py_to_pdf(input_file, output_file)
+
+    print(f"PDF created: {output_file}")
+else:
+    print("No file selected.")
